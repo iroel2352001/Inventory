@@ -23,9 +23,9 @@ public class koneksi {
             try{
                 kon = data.getConnection();
                 System.out.println("sudah konek");
-              catch (Exception e){
+            }  catch (Exception e){
                       System.out.println("tidak konek");
-                      }  
+                        
             }
         }
         return kon;

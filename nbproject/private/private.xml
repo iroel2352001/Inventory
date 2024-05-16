@@ -6,9 +6,11 @@
             <file>file:/C:/Users/USER/Documents/InventoryToko/src/dao/daoBarang.java</file>
             <file>file:/C:/Users/USER/Documents/InventoryToko/src/controller/controllerBarang.java</file>
             <file>file:/C:/Users/USER/Documents/InventoryToko/src/controller/koneksi.java</file>
-            <file>file:/C:/Users/USER/Documents/InventoryToko/src/view/FormBarang.java</file>
             <file>file:/C:/Users/USER/Documents/InventoryToko/src/model/TableModelBarang.java</file>
+            <file>file:/C:/Users/USER/Documents/InventoryToko/src/view/FormBarang.java</file>
             <file>file:/C:/Users/USER/Documents/InventoryToko/src/model/Barang.java</file>
+            <file>file:/C:/Users/USER/Documents/InventoryToko/src/model/Public.java</file>
+            <file>file:/C:/Users/USER/Documents/InventoryToko/src/inventorytoko/InventoryToko.java</file>
         </group>
     </open-files>
 </project-private>

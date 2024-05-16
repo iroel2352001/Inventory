@@ -7,51 +7,26 @@ package view;
 import controller.*;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
 /**
  *
  * @author User
  */
 public class FormBarang extends javax.swing.JFrame {
     controllerBarang cBarang;
-
-    public JTextField getTxtHarga() {
-        return txtHarga;
+    /**
+     * Creates new form FormBarang
+     */
+    public FormBarang() {
+        initComponents();
+        cBarang = new controllerBarang(this);
+        cBarang.tampil_tabel();
     }
-
-    public void setTxtHarga(JTextField txtHarga) {
-        this.txtHarga = txtHarga;
-    }
-
-    public JTextField getTxtJumlah() {
-        return txtJumlah;
-    }
-
-    public void setTxtJumlah(JTextField txtJumlah) {
-        this.txtJumlah = txtJumlah;
-    }
-
-    public JTextField getTxtKode() {
-        return txtKode;
-    }
-
-    public void setTxtKode(JTextField txtKode) {
-        this.txtKode = txtKode;
-    }
-
-    public JTextField getTxtMerek() {
-        return txtMerek;
-    }
-
-    public void setTxtMerek(JTextField txtMerek) {
-        this.txtMerek = txtMerek;
-    }
-
-    public JTextField getTxtNama() {
-        return txtNama;
-    }
-
-    public void setTxtNama(JTextField txtNama) {
-        this.txtNama = txtNama;
+    
+    public void tampilkantabel(){
+        cBarang = new controllerBarang(this);
+        cBarang.tampil_tabel();
+        
     }
 
     public JTable getTblBarang() {
@@ -62,16 +37,44 @@ public class FormBarang extends javax.swing.JFrame {
         this.tblBarang = tblBarang;
     }
 
-    
-
-    public FormBarang() {
-        initComponents();
-        cBarang = new controllerBarang(this);
-        cBarang.tampil_tabel();
+    public JTextField getTxtHarga() {
+        return txtHarga;
     }
-    public void tampilkantabel() {
-        cBarang = new controllerBarang(this);
-        cBarang.tampil_tabel();
+
+    public void setTxtHarga(int txtHarga) {
+        this.txtHarga.setText(Integer.toString(txtHarga));
+    }
+
+    public JTextField getTxtJumlah() {
+        return txtJumlah;
+    }
+
+    public void setTxtJumlah(int txtJumlah) {
+        this.txtJumlah.setText(Integer.toString(txtJumlah));
+    }
+
+    public JTextField getTxtKode() {
+        return txtKode;
+    }
+
+    public void setTxtKode(String txtKode) {
+        this.txtKode.setText(txtKode);
+    }
+
+    public JTextField getTxtMerek() {
+        return txtMerek;
+    }
+
+    public void setTxtMerek(String txtMerek) {
+        this.txtMerek.setText(txtMerek);
+    }
+
+    public JTextField getTxtNama() {
+        return txtNama;
+    }
+
+    public void setTxtNama(String txtNama) {
+        this.txtNama.setText(txtNama);
     }
 
     /**
@@ -201,6 +204,11 @@ public class FormBarang extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Jumlah", "Harga", "Merek"
             }
         ));
+        tblBarang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBarangMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBarang);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -223,14 +231,39 @@ public class FormBarang extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         btnUbah.setText("Ubah");
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
 
         btnBatal.setText("Bersih");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
 
         btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
         btnKeluar.setText("Keluar");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -292,6 +325,45 @@ public class FormBarang extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        cBarang.tambahData();
+        tampilkantabel();
+        cBarang.bersih();
+        txtKode.requestFocus();
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        cBarang.ubahData();
+        tampilkantabel();
+        cBarang.bersih();
+        txtKode.requestFocus();
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        cBarang.bersih();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        cBarang.hapusData();
+        tampilkantabel();
+        cBarang.bersih();
+        txtKode.requestFocus();
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+        cBarang.keluar();
+    }//GEN-LAST:event_btnKeluarActionPerformed
+
+    private void tblBarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBarangMouseClicked
+        // TODO add your handling code here:
+        int pilih = tblBarang.getSelectedRow();
+        txtKode.setText(tblBarang.getModel().getValueAt(pilih, 0).toString());
+        txtNama.setText(tblBarang.getModel().getValueAt(pilih, 1).toString());
+        txtJumlah.setText(tblBarang.getModel().getValueAt(pilih, 2).toString());
+        txtHarga.setText(tblBarang.getModel().getValueAt(pilih, 3).toString());
+        txtMerek.setText(tblBarang.getModel().getValueAt(pilih, 4).toString());
+    }//GEN-LAST:event_tblBarangMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -351,4 +423,6 @@ public class FormBarang extends javax.swing.JFrame {
     private javax.swing.JTextField txtMerek;
     private javax.swing.JTextField txtNama;
     // End of variables declaration//GEN-END:variables
+
+  
 }

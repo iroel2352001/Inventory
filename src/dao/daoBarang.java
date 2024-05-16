@@ -4,8 +4,8 @@
  */
 package dao;
 
-import com.mysql.cj.xdevapi.PreparableStatement;
-import com.sun.jdi.connect.spi.Connection;
+//import com.mysql.cj.xdevapi.PreparableStatement;
+//import com.sun.jdi.connect.spi.Connection;
 import controller.koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -77,7 +77,7 @@ public class daoBarang {
     public void tampil(Barang brg){
         PreparedStatement statement = null;
         try {
-            Statement = connection.prepareStatement(selectData);
+            statement = connection.prepareStatement(selectData);
             statement.setString(1, brg.getKode());
             statement.executeUpdate();
         }catch (SQLException ex){
@@ -91,7 +91,7 @@ public class daoBarang {
             listBrg = new ArrayList<>();
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(select);
-            while (rs.netxt()){
+            while (rs.next()){
                 Barang brg = new Barang();
                 brg.setKode(rs.getString("kode"));
                 brg.setNama(rs.getString("nama"));
@@ -119,5 +119,6 @@ public class daoBarang {
         }catch (SQLException ex){
             
         }
-    }return ketemu;
+        return ketemu;
+    }
 }

@@ -42,8 +42,8 @@ public class TableModelBarang extends AbstractTableModel{
     }
     
     @Override
-    public String getColumnNama(int column){
-        returm switch(column){
+    public String getColumnName(int column){
+        return switch(column){
             case 0 -> "Kode Barang";
             case 1 -> "Nama Barang";
             case 2 -> "Jumlah";

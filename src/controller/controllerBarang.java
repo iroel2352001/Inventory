@@ -32,13 +32,47 @@ public class controllerBarang {
     
     public void tambahData(){
         if (frame.getTxtKode().getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Kode Barang beum diisi");
+            JOptionPane.showMessageDialog(null, "Kode barang belum diisi");
         } else {
             brg.setKode(frame.getTxtKode().getText());
             brg.setNama(frame.getTxtNama().getText());
-            brg.setJumlah(Interger.parseInt(frame.getTxtJumlah().getText()));
+            brg.setJumlah(Integer.parseInt(frame.getTxtJumlah().getText()));
             brg.setHarga(Integer.parseInt(frame.getTxtHarga().getText()));
-            
+            brg.setMerek(frame.getTxtKode().getText());
+            daoBrg.tambah(brg);
+            JOptionPane.showMessageDialog(frame, "Data berhasil di simpan");
         }
+    }
+    
+    public void ubahData(){
+        if (frame.getTxtKode().getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Kode barang belum diisi");
+        } else {
+            brg.setKode(frame.getTxtKode().getText());
+            brg.setNama(frame.getTxtNama().getText());
+            brg.setJumlah(Integer.parseInt(frame.getTxtJumlah().getText()));
+            brg.setHarga(Integer.parseInt(frame.getTxtHarga().getText()));
+            brg.setMerek(frame.getTxtKode().getText());
+            daoBrg.ubah(brg);
+            JOptionPane.showMessageDialog(frame, "Data berhasil di ubah");
+        }
+    }
+    
+    public void hapusData(){
+        brg.setKode(frame.getTxtKode().getText());
+        daoBrg.hapus(brg);
+        JOptionPane.showMessageDialog(frame, "Data berhasil di hapus");
+    }
+    
+    public void bersih() {
+        frame.setTxtKode("");
+        frame.setTxtNama("");
+        frame.setTxtJumlah(0);
+        frame.setTxtHarga(0);
+        frame.setTxtMerek("");
+    }
+    
+    public void keluar(){
+        frame.dispose();
     }
 }
