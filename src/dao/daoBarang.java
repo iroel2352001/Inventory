@@ -24,7 +24,7 @@ import model.Barang;
 public class daoBarang {
     Connection connection;
     final String insert = "INSERT INTO barang (kode, nama, jumlah, harga, merek) VALUES (?,?,?,?,?);";
-    final String update = "UPDATE barang SET name=?, jumlah=?, harga=?, merek=? WHERE kode=?";
+    final String update = "UPDATE barang SET nama=?, jumlah=?, harga=?, merek=? WHERE kode=?";
     final String delete = "DELETE FROM barang WHERE kode=?;";
     final String select = "SELECT * FROM barang ORDER BY kode ASC;";
     final String selectData = "SELECT * FROM barang WHERE kode=?;";
@@ -52,11 +52,11 @@ public class daoBarang {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(update);
-            statement.setString(1, brg.getKode());
-            statement.setString(2, brg.getNama());
-            statement.setInt(3, brg.getJumlah());
-            statement.setInt(4, brg.getHarga());
-            statement.setString(5, brg.getMerek());
+            statement.setString(1, brg.getNama());
+            statement.setInt(2, brg.getJumlah());
+            statement.setInt(3, brg.getHarga());
+            statement.setString(4, brg.getMerek());
+            statement.setString(5, brg.getKode());
             statement.executeUpdate();
         }catch (SQLException ex){
             

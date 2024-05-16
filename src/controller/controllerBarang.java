@@ -38,7 +38,7 @@ public class controllerBarang {
             brg.setNama(frame.getTxtNama().getText());
             brg.setJumlah(Integer.parseInt(frame.getTxtJumlah().getText()));
             brg.setHarga(Integer.parseInt(frame.getTxtHarga().getText()));
-            brg.setMerek(frame.getTxtKode().getText());
+            brg.setMerek(frame.getTxtMerek().getText());
             daoBrg.tambah(brg);
             JOptionPane.showMessageDialog(frame, "Data berhasil di simpan");
         }
@@ -52,7 +52,7 @@ public class controllerBarang {
             brg.setNama(frame.getTxtNama().getText());
             brg.setJumlah(Integer.parseInt(frame.getTxtJumlah().getText()));
             brg.setHarga(Integer.parseInt(frame.getTxtHarga().getText()));
-            brg.setMerek(frame.getTxtKode().getText());
+            brg.setMerek(frame.getTxtMerek().getText());
             daoBrg.ubah(brg);
             JOptionPane.showMessageDialog(frame, "Data berhasil di ubah");
         }
