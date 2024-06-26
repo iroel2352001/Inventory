@@ -5,6 +5,7 @@
 package controller;
 
 import view.FormBarang;
+import view.FormCariBarang;
 import view.FormLupa;
 import view.FormPegawai;
 import view.MenuUtama;
@@ -18,6 +19,7 @@ public class controllerMenuUtama {
     FormBarang fBarang;
     FormPegawai fPegawai;
     FormLupa fLupaPass;
+    FormCariBarang fCariBarang;
   
     
     public controllerMenuUtama(MenuUtama frame) {
@@ -37,6 +39,11 @@ public class controllerMenuUtama {
     public void masukFormLupaPass() {
         fLupaPass = new FormLupa();
         fLupaPass.setVisible(true);
+    }
+    
+    public void masukFormCariBarang() {
+        fCariBarang = new FormCariBarang();
+        fCariBarang.setVisible(true);
     }
     
     public void keluar() {
