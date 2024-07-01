@@ -5,6 +5,11 @@
 package view;
 
 import controller.controllerMenuUtama;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import view.FormBarang;
 /**
@@ -20,7 +25,49 @@ public class MenuUtama extends javax.swing.JFrame {
     public MenuUtama() {
         initComponents();
         cMenuUtama = new controllerMenuUtama(this);
+        jam();
+        Tampil_Tanggal();
     }
+
+        private void jam() {
+           try {
+               ActionListener taskPerformer = new ActionListener() {
+               public void actionPerformed(ActionEvent ae) {
+               String Vjam;
+               String noljam = "";
+               String nolmenit = "";
+               String noldetik = "";
+               Calendar dt = Calendar.getInstance();
+               int jam = dt.get(Calendar.HOUR_OF_DAY);
+                    int menit = dt.get(Calendar.MINUTE);
+                    int detik = dt.get(Calendar.SECOND);
+                    if (jam < 10) {
+                        noljam = "0";
+                    }
+                    if (menit < 10) {
+                        nolmenit = "0";
+                    }
+                    if (detik < 10) {
+                        noldetik = "0";
+                    }
+                    String Sjam = noljam + Integer.toString(jam);
+                    String Smenit = nolmenit + Integer.toString(menit);
+                    String Sdetik = noldetik + Integer.toString(detik);
+                    Vjam = Sjam + ":" + Smenit + ":" + Sdetik;
+                    txtwaktu.setText(Vjam);
+                    }};
+                    new javax.swing.Timer(1000, taskPerformer).start();
+                    } catch (Exception e) {
+                    System.out.println("Error : " + e);
+                    }
+                    }
+        
+    public void Tampil_Tanggal() {
+       java.util.Date tglsekarang = new java.util.Date();
+       SimpleDateFormat smpdtfmt = new SimpleDateFormat("dd MMMMMMMMM yyyy", Locale.getDefault());
+       String tanggal = smpdtfmt.format(tglsekarang);
+       txttanggal.setText(tanggal);
+}               
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +78,8 @@ public class MenuUtama extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtwaktu = new javax.swing.JTextField();
+        txttanggal = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         master = new javax.swing.JMenu();
         masterBarang = new javax.swing.JMenuItem();
@@ -43,6 +92,10 @@ public class MenuUtama extends javax.swing.JFrame {
         keluar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtwaktu.setText("jTextField1");
+
+        txttanggal.setText("jTextField1");
 
         master.setText("Master");
 
@@ -97,11 +150,21 @@ public class MenuUtama extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(txttanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtwaktu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtwaktu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txttanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,5 +238,7 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JMenuItem masterLupaPass;
     private javax.swing.JMenuItem masterPegawai;
     private javax.swing.JMenu pencarian;
+    private javax.swing.JTextField txttanggal;
+    private javax.swing.JTextField txtwaktu;
     // End of variables declaration//GEN-END:variables
 }
